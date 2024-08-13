@@ -30,7 +30,24 @@ print("")
 print("Function: report_long_words")
 
 def report_long_words(words):
-  pass
+
+  def check_len_and_syntax(word):
+    if ('-' not in word) and (len(word) >= 10):
+      return word
+    
+  new_list = list(filter(check_len_and_syntax, words))
+  
+  def add_dots(word):
+    if len(word) >= 15:
+      word = word[0:15] + '...' 
+    return word
+  
+  result = list(map(add_dots, new_list))
+
+  return f'These words are quite long: {', '.join(result)}'
+
+
+
 
 check_that_these_are_equal(
   report_long_words([
